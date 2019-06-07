@@ -1,7 +1,7 @@
 <h1>Enter a location to see current weather</h1>
 
-<form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
-  <h5 *ngIf="success">Your form is valid!</h5>
+<form class="myform" [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+  <!-- <h5 *ngIf="success">Your form is valid!</h5> -->
 
   <label>
     Location:
@@ -12,7 +12,10 @@
       *ngIf="submitted && locationForm.controls.location.errors"
       class="error"
     >
-      <div *ngIf="locationForm.controls.location.errors.required"></div>
+      <div
+        class="submitError"
+        *ngIf="locationForm.controls.location.errors.required"
+      ></div>
       Please enter a location to search
     </div>
   </label>
