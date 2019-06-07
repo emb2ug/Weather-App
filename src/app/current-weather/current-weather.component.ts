@@ -13,9 +13,11 @@ export class CurrentWeatherComponent implements OnInit {
   success = false;
   cityName = "";
   result: Object;
-  condition: "";
-  tempK: 0;
-  tempF: 0;
+  condition = "";
+  tempK = 0;
+  tempF = 0;
+  rain = false;
+  clear = false;
 
   constructor(private data: DataService, private formBuilder: FormBuilder) {
     this.locationForm = this.formBuilder.group({
@@ -45,11 +47,20 @@ export class CurrentWeatherComponent implements OnInit {
     console.log(this.cityName);
 
     this.data.getCurrentWeather(this.cityName).subscribe(data => {
+      this.rain = false;
+      this.clear = false;
       this.result = data;
       this.condition = data.weather[0].main;
       this.tempK = data.main.temp;
       this.tempF = this.tempK * (9 / 5) - 459.67;
+      this.tempF = Math.round(this.tempF);
       console.log(this.result);
+
+      if (this.condition == "Rain") {
+        this.rain = true;
+      } else if (this.condition == "Clear") {
+        this.clear = true;
+      }
     });
   }
 

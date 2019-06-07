@@ -26,12 +26,26 @@
   <span>{{ cityName }}</span>
 </div> -->
 
-<div *ngIf="success">
-  Here is the weather for {{ cityName }}
-  <br />
-  <!-- {{ result.weather[0].main }} -->
-  {{ this.condition }}
-  <br />
-  {{ this.tempF }}
-  <br />
+<div class="response">
+  <div class="myitem">
+    <div *ngIf="success">
+      Current weather in {{ cityName }}:
+      <br />
+      <!-- {{ result.weather[0].main }} -->
+      Temperature: {{ this.tempF }} degrees
+      <br />
+      Condition: {{ this.condition }}
+      <br />
+    </div>
+    <div *ngIf="success && rain" class="myitem">
+      <img
+        src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Cloud_Snowing_Cloud_Climate-256.png"
+      />
+    </div>
+    <div *ngIf="success && clear" class="myitem">
+      <img
+        src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Hot_Sun_Day-256.png"
+      />
+    </div>
+  </div>
 </div>

@@ -40,3 +40,17 @@ span {
   margin-bottom: 20px;
   display: block;
 }
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+.response {
+  display: flex;
+  flex-direction: row;
+}
+
+.myitem {
+  display: flex;
+}
