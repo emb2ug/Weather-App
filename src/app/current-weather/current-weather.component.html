@@ -1,0 +1,37 @@
+<h1>Enter a location to see current weather</h1>
+
+<form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+  <h5 *ngIf="success">Your form is valid!</h5>
+
+  <label>
+    Location:
+    <input type="text" formControlName="location" />
+
+    <!-- will only show if submitted and errors exist -->
+    <div
+      *ngIf="submitted && locationForm.controls.location.errors"
+      class="error"
+    >
+      <div *ngIf="locationForm.controls.location.errors.required"></div>
+      Please enter a location to search
+    </div>
+  </label>
+
+  <input type="submit" value="Search" class="cta" />
+</form>
+
+<!-- <div *ngIf="submitted" class="results">
+  <strong>Searched Location:</strong>
+  <span>{{ locationForm.controls.location.value }}</span>
+  <span>{{ cityName }}</span>
+</div> -->
+
+<div *ngIf="success">
+  Here is the weather for {{ cityName }}
+  <br />
+  <!-- {{ result.weather[0].main }} -->
+  {{ this.condition }}
+  <br />
+  {{ this.tempF }}
+  <br />
+</div>
