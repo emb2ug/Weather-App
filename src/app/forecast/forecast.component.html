@@ -1,3 +1,56 @@
-<p>
+<!-- <p>
   Forecast feature under construction...
-</p>
+</p> -->
+
+<h1>Enter a location to see the upcoming forecast</h1>
+
+<form class="myform" [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+  <!-- <h5 *ngIf="success">Your form is valid!</h5> -->
+
+  <label>
+    Location:
+    <input type="text" formControlName="location" />
+
+    <!-- will only show if submitted and errors exist -->
+    <div
+      *ngIf="submitted && locationForm.controls.location.errors"
+      class="error"
+    >
+      <div
+        class="submitError"
+        *ngIf="locationForm.controls.location.errors.required"
+      ></div>
+      Please enter a location to search
+    </div>
+  </label>
+
+  <input type="submit" value="Search" class="cta" />
+</form>
+
+<div class="response">
+  <div class="myitem">
+    <div *ngIf="success && allResults">
+      Upcoming weather in {{ cityName }}:
+      <ul>
+        <li *ngFor="let indivResult of allResults">
+          <!-- {{ cityName }} -->
+          {{ indivResult.dt_txt }}
+
+          Temperature: {{ indivResult.main.temp }}
+
+          Conditions: {{ indivResult.weather[0].description }}
+        </li>
+      </ul>
+      <div *ngIf="success && rain" class="myitem">
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Cloud_Snowing_Cloud_Climate-256.png"
+        />
+      </div>
+      <div *ngIf="success && clear" class="myitem">
+        <img
+          src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Hot_Sun_Day-256.png"
+        />
+      </div>
+    </div>
+  </div>
+</div>
