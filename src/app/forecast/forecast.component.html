@@ -29,28 +29,30 @@
 
 <div class="response">
   <div class="myitem">
-    <div *ngIf="success && allResults">
+    <div *ngIf="success && myResults" class="allForecastItems">
       Upcoming weather in {{ cityName }}:
-      <ul>
-        <li *ngFor="let indivResult of allResults">
-          <!-- {{ cityName }} -->
-          {{ indivResult.dt_txt }}
-
-          Temperature: {{ indivResult.main.temp }}
-
-          Conditions: {{ indivResult.weather[0].description }}
+      <ul class="thelist">
+        <li *ngFor="let indivResult of myResults" class="forecastItem">
+          <div class="textDetails">
+            <!-- {{ cityName }} -->
+            {{ indivResult.dt_txt }}
+            <br />
+            Temperature: {{ indivResult.main.temp }}
+            <br />
+            Conditions: {{ indivResult.weather[0].description }}
+          </div>
+          <div *ngIf="success && indivResult.rain" class="myitem">
+            <img
+              src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Cloud_Snowing_Cloud_Climate-256.png"
+            />
+          </div>
+          <div *ngIf="success && indivResult.clear" class="myitem">
+            <img
+              src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Hot_Sun_Day-256.png"
+            />
+          </div>
         </li>
       </ul>
-      <div *ngIf="success && rain" class="myitem">
-        <img
-          src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Cloud_Snowing_Cloud_Climate-256.png"
-        />
-      </div>
-      <div *ngIf="success && clear" class="myitem">
-        <img
-          src="https://cdn2.iconfinder.com/data/icons/weather-and-forecast-free/32/Weather_Weather_Forecast_Hot_Sun_Day-256.png"
-        />
-      </div>
     </div>
   </div>
 </div>

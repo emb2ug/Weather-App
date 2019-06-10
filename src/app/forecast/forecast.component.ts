@@ -20,6 +20,7 @@ export class ForecastComponent implements OnInit {
   clear = false;
   key = "";
   allResults = [];
+  myResults = [];
 
   constructor(private data: DataService, private formBuilder: FormBuilder) {
     this.locationForm = this.formBuilder.group({
@@ -67,13 +68,17 @@ export class ForecastComponent implements OnInit {
         this.allResults.forEach(item => {
           item.main.temp = item.main.temp * (9 / 5) - 459.67;
           item.main.temp = Math.round(item.main.temp);
+
+          if (item.weather[0].main == "Rain") {
+            item.rain = true;
+          } else if (item.weather[0].main == "Clear") {
+            item.clear = true;
+          }
         });
 
-        // if (this.condition == "Rain") {
-        //   this.rain = true;
-        // } else if (this.condition == "Clear") {
-        //   this.clear = true;
-        // }
+        for (let i = 0; i < 8; i++) {
+          this.myResults[i] = this.allResults[i];
+        }
       });
     });
   }
