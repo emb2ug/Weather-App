@@ -1,0 +1,54 @@
+header {
+  background: black;
+}
+.logo {
+  font-weight: bold;
+  font-size: 2em;
+  width: 400px;
+  height: 10px;
+  color: white;
+}
+
+nav {
+  justify-self: right;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: left;
+}
+a:hover {
+  opacity: 1;
+  background: blue;
+}
+a {
+  padding: 1.5em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
+
+.navItem {
+  margin: 10px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+h2 {
+  color: white;
+  margin: 0;
+}
+
+header {
+  height: 15%;
+}
